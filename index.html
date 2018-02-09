@@ -1,33 +1,38 @@
 <!DOCTYPE html>
-<html lang="en" ng-app="myApp">
+<html lang="en"  ng-app="myApp">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Document</title>
+    <link rel="stylesheet" href="style.css">
    <script src="angular.min.js"></script>
    <script src="app.js"></script>
 </head>
 <body>
 
     <div ng-controller="myCtr">
-       <table border="1">
-           <tr>
-               <th>Name</th>
-               <th>id</th>
-               <th>photo</th>
-               <th>runs</th>
-           </tr>
-           <tr ng-repeat="player in players">
-               <td>{{player.name}}</td>
-               <td>{{player.id}}</td>
-               <td><img ng-src="{{player.photo}}"</td>
-               <td>{{player.runs}}</td>
-           </tr>
-       </table>
+
+        <table>
+            <tr>
+                <th>Name</th>
+                <th>id</th>
+                <th>Photo</th>
+                <th>delete</th>
+            </tr>
+            <tr ng-repeat="x in gituser">
+                <td>{{x.login}}</td>
+                <td>{{x.id}}</td>
+                <td><img ng-src="{{x.avatar_url}}"</td>
+                <td ng-click="removeItem(x)">delete</td>
+
+            </tr>
+        </table>
     </div>
-    
 
 
+
+
+</div>
 </body>
 </html>
