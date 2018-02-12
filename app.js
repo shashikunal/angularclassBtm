@@ -1,22 +1,23 @@
-const app = angular.module("myApp" , []);
+var myapp = angular.module("testApp" , ["ngRoute"]);
 
 
-
-app.controller("myCtr" , function($scope , $http){
-    $http.get("https://api.github.com/users").then(function(item){
-        $scope.gituser = item.data;
+// route
+myapp.config(function($routeProvider , $locationProvider){
+    $routeProvider.when("/login" , {
+        templateUrl:"/views/login.html"
+    }).when("/register" , {
+        templateUrl:"/views/register.html"
+    }).otherwise({
+        redirectTo:"/login"
     });
 
+})
 
-    // $scope.removeItem = function(user){
-    //     var removedItem =  $scope.gituser.indexOf(user);
-    //     $scope.gituser.splice(removedItem , 1)
 
-    // }
 
- $scope.removeItem = function(x){
-      var removedata = $scope.gituser.indexOf(x);
-      $scope.gituser.splice(removedata , 1)
-    }
 
-});
+
+//controller
+myapp.controller("myCtr" , function($scope){
+    $scope.test
+})
