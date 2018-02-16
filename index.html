@@ -1,11 +1,14 @@
 <!DOCTYPE html>
-<html lang="en"  ng-app="testApp">
+<html lang="en" ng-app="app">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Document</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.7/css/bootstrap.min.css">
     <link rel="stylesheet" href="style.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.2.1/jquery.min.js"></script>
+    <script src="bootstrap/dist/js/bootstrap.min.js"></script>
    <script src="angular.min.js"></script>
    <script src="https://code.angularjs.org/1.6.7/angular-route.min.js"></script>
    <script src="app.js"></script>
@@ -13,6 +16,63 @@
 <body>
     <header ng-include="'/views/header.html'"></header>
 <main ng-view></main>
+
+
+
+<div ng-controller="testCtr">
+    <h1>{{message}}</h1>
+
+    <h1>{{time}}</h1>
+</div>
+
+
+<form>
+    <input type="text" minlength="5" placeholder="enter a name" required />
+
+    <input type="submit" value="submit">
+</form>
+
+
+<div ng-controller="myCtr">
+
+    
+
+    <div class="container">
+     <input class="form-control" type="search"  ng-model="search.firstname" />
+
+     <input  class="form-control" type="number" ng-model="limit">
+
+
+     <input  class="form-control" type="text" name="" id="" ng-model="limitfilter" placeholder="search filter">
+    
+    
+     <table class="table table-bordered">
+        <tr>
+            <th><a ng-click="order='firstname';reverse=!reverse">firstname</a></th>
+            <th>lastName </th>
+            <th>Number</th>
+            <th>company</th>
+            <th>salary</th>
+            <th>designation</th>
+            <th>dob</th>
+            
+        </tr>
+        <tr ng-repeat="user in users | filter:search | limitTo:limit | orderBy:order:reverse">
+            <td>{{user.firstname | uppercase | limitTo:3}}</td>
+            <td>{{user.lastName | shashi:limitfilter }}</td>
+            <td>{{user.Number}}</td>
+            <td>{{user.company}}</td>
+            <td>{{user.salary | currency:"&#8377;"}}</td>
+            <td>{{user.designation}}</td>
+            <td>{{user.dob | date:'MM/dd/yy'}}</td>
+        </tr>
+    </table>
+
+
+  
+</div>
+</div>
+
 
 
 </body>
